@@ -1,0 +1,7 @@
+{
+  // "extends": ["airbnb","airbnb-typescript","plugin:prettier/recommended"],
+  "extends": ["eslint:recommended", "next", "plugin:prettier/recommended"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  }
+}
