@@ -6,16 +6,14 @@ import { useEffect } from "react";
 // };
 async function fetchData() {
   const res = await fetch("/api/add_ration");
-  const data  = await res.json();
-  console.log(data)
+  const data = await res.json();
+  console.log(data);
 }
-
-
 
 const Home: NextPage = () => {
   useEffect(() => {
     fetchData();
-  },[])
+  }, []);
 
   return <div>home</div>;
 };
