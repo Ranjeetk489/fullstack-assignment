@@ -11,11 +11,25 @@ datasource db {
 }
 
 model inventory {
-  id  String  @id
-  packet_type String?
-  packet_content String
-  calories Int
-  expiry DateTime
-  quantity Int
+  id    String  @id() @default(cuid())
+  water water[]
+  food  food[]
 }
 
+model water {
+  id          String     @id
+  type        String?    @default("Water")
+  inventory   inventory? @relation(fields: [inventoryId], references: [id])
+  inventoryId String?
+  quantity    Int
+}
+
+model food {
+  id             String     @id
+  type           String?  @default("Food")
+  packet_content String
+  calories       Int
+  expiry         DateTime
+  inventory      inventory? @relation(fields: [inventoryId], references: [id])
+  inventoryId    String?
+}
