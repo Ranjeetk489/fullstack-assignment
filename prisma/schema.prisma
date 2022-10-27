@@ -26,7 +26,7 @@ model water {
 
 model food {
   id             String     @id
-  type           String?  @default("Food")
+  type           String?    @default("Food")
   packet_content String
   calories       Int
   expiry         DateTime

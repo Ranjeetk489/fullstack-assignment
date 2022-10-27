@@ -11,8 +11,8 @@ export type WaterType = {
 };
 
 export type InventoryContentType = {
-  foodData: FoodType;
-  waterData: WaterType;
+  foodData: FoodType[];
+  waterData: WaterType[];
 };
 
 export type InventoryContent = {
