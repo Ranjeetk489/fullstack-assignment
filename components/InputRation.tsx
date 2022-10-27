@@ -1,6 +1,3 @@
-import type { NextPage } from "next";
-import { useState } from "react";
-
 const foodData = [
   { id: 1, name: "Food Id", type: "text", value: "" },
   { id: 2, name: "Packet Content", type: "text", value: "" },
@@ -13,6 +10,7 @@ const waterData = [
 ];
 
 const InputRation = ({ inventory, setInventory, handleSubmit }) => {
+  // console.log(inventory)
   return (
     <>
       <div className=" ">
@@ -36,10 +34,12 @@ const InputRation = ({ inventory, setInventory, handleSubmit }) => {
         <div className="flex">
           <div
             className={
-              inventory.length > 1 ? "overflow-y-scroll h-[30rem]" : "hidden"
+              inventory && inventory.length > 1
+                ? "overflow-y-scroll h-[30rem]"
+                : "hidden"
             }
           >
-            {inventory.length > 1 && (
+            {inventory && inventory.length > 1 && (
               <InventoryInput
                 inventory={inventory}
                 setInventory={setInventory}
@@ -56,19 +56,15 @@ export default InputRation;
 
 const InventoryInput = ({ inventory, setInventory }) => {
   // changes values in inventory from user  input
+  // implement checking whether input is provided in all fields or not
   const handleInput = (e, i) => {
-    // const temp = inventory;
-    // console.log(i);
-    // temp[i].value = 14;
-    // setInventory([...temp]);
-    // console.log(temp);
-    setInventory(prev => {
-      prev[i].value = e.target.value;
-    })
-    // setInventory([...temp]);
-    // console.log(inventory);
+    const temp = JSON.parse(JSON.stringify(inventory));
+    console.log(i);
+    temp[i].value = e.target.value;
+    console.log(temp);
+    setInventory([...temp]);
   };
-  console.log(inventory);
+
   //maps over the inventory and shows the inventory itemss
   return (
     <>
